@@ -36,7 +36,7 @@
 		<script src="<?php echo base_url('assets/js/html5shiv.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/respond.min.js');?>"></script>
 		<![endif]-->
-<?php $url = $this->uri->segment(2); if ($url=='edit'||$url=='view'){ ?>
+<?php $url = $this->uri->segment(2); if ($url=='edit'||$url=='view'||$url=='profile'||$url=='editprofile'||$url=='changepassword'){ ?>
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="<?php echo base_url('assets/css/jquery-ui.custom.min.css');?>" />
 		<link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.gritter.min.css');?>" />

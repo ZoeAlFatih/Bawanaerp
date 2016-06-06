@@ -56,6 +56,10 @@ class Employees extends Admin_Controller {
 	
 	public function edit($id = NULL){
 		if ($id != NULL) {
+			//decode $id
+			$id=str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+			$id=$this->encrypt->decode($id);
+			
 			$this->data['employees'] = $this->employees_m->get($id);
 			count($this->data['employees']) || $this->data['errors'][]='Data Employees not found.';
 			// load library
@@ -131,6 +135,10 @@ class Employees extends Admin_Controller {
 	}
 	
 	public function view($id){
+		//decode $id
+		$id=str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$id=$this->encrypt->decode($id);
+		
 		$this->data['employees'] = $this->employees_m->get($id);
 		// load library
 		$this->load->library('breadcrumb');
@@ -148,7 +156,151 @@ class Employees extends Admin_Controller {
 		$this->load->view('_layout_main', $this->data);
 	}
 	
+	public function profile($id){
+		//decode $id
+		$id=str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$id=$this->encrypt->decode($id);
+		
+		$this->data['employees'] = $this->employees_m->get($id);
+		
+		// load library
+		$this->load->library('breadcrumb');
+		// build up
+		$this->breadcrumb->clear();
+		$this->breadcrumb->add_crumb('Home', base_url()); // this will be a link
+		$this->breadcrumb->add_crumb('Profile'); // this will be a link
+		$this->breadcrumb->add_crumb($this->data['employees']->name); // this will be a link
+		// change link
+		$this->breadcrumb->change_link('/'); // you can change what joins the crumbs
+		// output
+		$this->data['breadcrumb']=$this->breadcrumb->output();
+		//Load View
+		$this->data['subview'] = 'employees/profile';
+		$this->load->view('_layout_main', $this->data);
+	}
+	
+	public function editprofile($id){
+		//decode $id
+		$id=str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$id=$this->encrypt->decode($id);
+		
+		$this->data['employees'] = $this->employees_m->get($id);
+		count($this->data['employees']) || $this->data['errors'][]='Data Employees not found.';
+		// load library
+		$this->load->library('breadcrumb');
+		// build up
+		$this->breadcrumb->clear();
+		$this->breadcrumb->add_crumb('Home', base_url()); // this will be a link
+			
+			//encode $id
+			$enc_id=$this->encrypt->encode($this->session->userdata['id']);
+			$enc_id=str_replace(array('+', '/', '='), array('-', '_', '~'), $enc_id);
+		
+		$this->breadcrumb->add_crumb('Your Profile',base_url('employees/profile/'.$enc_id)); // this will be a link
+		$this->breadcrumb->add_crumb('Edit Profile <i class="ace-icon fa fa-angle-double-right"></i> '.$this->data['employees']->name); // this will be a link
+		// change link
+		$this->breadcrumb->change_link('/'); // you can change what joins the crumbs
+		// output
+		$this->data['breadcrumb']=$this->breadcrumb->output();
+		
+	
+		//Set up the form
+		$rules = $this->employees_m->rules_admin;
+		$id || $rules['password']['rules'] .= '|required';
+		$this->form_validation->set_rules($rules);
+	
+		//Process the form
+		if ($this->form_validation->run()== TRUE) {
+			
+			$config = array (
+					'allowed_types' => 'jpg|jpeg|gif|png',
+					'upload_path' => $this->employees_path,
+					'max_size' => 100000,
+					'remove_spaces' => true
+			);
+			
+			$this->load->library('upload', $config);
+			$this->upload->do_upload();
+			$temp = $this->upload->data();
+			$image = $temp['file_name']; // to get image file name rom upload script , as it could be stored in the databae
+			$this->resize($temp['full_path'],$temp['file_name']);
+			
+			if ($this->input->post('password')== FALSE):
+			$data = $this->employees_m->array_form_post(array('name','username','email','place_of_birth','date_of_birth','gender','address','phone_number','start_work','job','salary','id_number','npwp','marital_status','number_of_children'));
+			
+			else :
+			$data = $this->employees_m->array_form_post(array('name','username','email','place_of_birth','date_of_birth','gender','address','phone_number','start_work','job','salary','id_number','npwp','marital_status','number_of_children','foto'));
+			$data['foto']= $image;
+			endif;
+				
+			if($this->employees_m->save($data, $id)==true):
+			$this->session->set_flashdata('success','Your profile has been successfully updated..');
+			redirect('employees/profile/'.$enc_id);
+			else :
+			$this->session->set_flashdata('failed','Opss..your profile has failed to be updated..');
+			redirect('employees/profile/'.$enc_id);
+			endif;
+		}
+	
+		//Load the view
+		$this->data['subview']='employees/editprofile';
+		$this->load->view('_layout_main', $this->data);
+	}
+	
+	public function changepassword($id){
+		//decode $id
+		$id=str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$id=$this->encrypt->decode($id);
+		
+		$this->data['employees'] = $this->employees_m->get($id);
+		count($this->data['employees']) || $this->data['errors'][]='Data Employees not found.';
+		// load library
+		$this->load->library('breadcrumb');
+		// build up
+		$this->breadcrumb->clear();
+		$this->breadcrumb->add_crumb('Home', base_url()); // this will be a link
+			
+			//encode $id
+			$enc_id=$this->encrypt->encode($this->session->userdata['id']);
+			$enc_id=str_replace(array('+', '/', '='), array('-', '_', '~'), $enc_id);
+		
+		$this->breadcrumb->add_crumb('Your Profile',base_url('employees/profile/'.$enc_id)); // this will be a link
+		$this->breadcrumb->add_crumb('Change Password <i class="ace-icon fa fa-angle-double-right"></i> '.$this->data['employees']->name); // this will be a link
+		// change link
+		$this->breadcrumb->change_link('/'); // you can change what joins the crumbs
+		// output
+		$this->data['breadcrumb']=$this->breadcrumb->output();
+		
+		//Set up the form
+		$rules = $this->employees_m->rules_password;
+		$id || $rules['password']['rules'] .= '|required';
+		$this->form_validation->set_rules($rules);
+		
+		//Process the form
+		if ($this->form_validation->run()== TRUE) {
+				
+			$data = $this->employees_m->array_form_post(array('password'));
+			$data['password'] = $this->employees_m->hash($data['password']);
+		
+			if($this->employees_m->save($data, $id)==true):
+			$this->session->set_flashdata('success','Your password has been successfully updated..');
+			redirect('employees/profile/'.$enc_id);
+			else :
+			$this->session->set_flashdata('failed','Opss..your password has failed to be updated..');
+			redirect('employees/profile/'.$enc_id);
+			endif;
+		}
+		
+		//Load View
+		$this->data['subview'] = 'employees/changepassword';
+		$this->load->view('_layout_main', $this->data);
+	}
+	
 	public function delete($id){
+		//decode $id
+		$id=str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$id=$this->encrypt->decode($id);
+		
 		$this->employees_m->delete($id);
 		$this->session->set_flashdata('success','Data successfully deleted..');
 		redirect('employees');
@@ -157,6 +309,11 @@ class Employees extends Admin_Controller {
 	public function _unique_email($str){
 		//Validate email
 		$id = $this->uri->segment(3);
+		
+		//decode $id
+		$id=str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$id=$this->encrypt->decode($id);
+		
 		$this->db->where('email', $this->input->post('email'));
 		!$id || $this->db->where('id !=',$id);
 		$employees = $this->employees_m->get();
@@ -172,6 +329,11 @@ class Employees extends Admin_Controller {
 	public function _unique_username($str){
 		//Validate email
 		$id = $this->uri->segment(3);
+		
+		//decode $id
+		$id=str_replace(array('-', '_', '~'), array('+', '/', '='), $id);
+		$id=$this->encrypt->decode($id);
+		
 		$this->db->where('username', $this->input->post('username'));
 		!$id || $this->db->where('id !=',$id);
 		$employees = $this->employees_m->get();

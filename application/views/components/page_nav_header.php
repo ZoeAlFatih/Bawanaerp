@@ -292,15 +292,12 @@
 							</a>
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+								<?php 
+									$enc_id=$this->encrypt->encode($this->session->userdata['id']);
+									$enc_id=str_replace(array('+', '/', '='), array('-', '_', '~'), $enc_id);
+								?>
 								<li>
-									<a href="#">
-										<i class="ace-icon fa fa-cog"></i>
-										Settings
-									</a>
-								</li>
-
-								<li>
-									<a href="profile.html">
+									<a href="<?php echo base_url('employees/profile/'.$enc_id);?>">
 										<i class="ace-icon fa fa-user"></i>
 										Profile
 									</a>

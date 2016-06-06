@@ -132,7 +132,7 @@
 
 												<tbody>
 													<?php if (count($employees)): foreach ($employees as $employee): ?>
-													<?php $id =$employee->id;?>
+													<?php $enc_id=$this->encrypt->encode($employee->id); $enc_id=str_replace(array('+', '/', '='), array('-', '_', '~'), $enc_id);?>
 													<tr>
 														<td class="center">
 															<label class="pos-rel">
@@ -140,9 +140,8 @@
 																<span class="lbl"></span>
 															</label>
 														</td>
-
 														<td>
-															<a href="<?php echo base_url('employees/view/'.$id);?>"><?php echo $employee->name;?></a>
+															<a href="<?php echo base_url('employees/view/'.$enc_id);?>"><?php echo $employee->name;?></a>
 														</td>
 														<td><?php echo $employee->email;?></td>
 														<td><?php echo tgl_indo($employee->start_work);?></td>
@@ -150,15 +149,15 @@
 														<td><?php echo rupiah($employee->salary);?></td>
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="<?php echo base_url('employees/view/'.$id);?>">
+																<a class="blue" href="<?php echo base_url('employees/view/'.$enc_id);?>">
 																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
 																</a>
-
-																<a class="green" href="<?php echo base_url('employees/edit/'.$id);?>">
+																
+																<a class="green" href="<?php echo base_url('employees/edit/'.$enc_id);?>">
 																	<i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>
-
-																<a class="red" href="<?php echo base_url('employees/delete/'.$id);?>" onclick="return confirm('Are you sure to delete this data?')">
+																
+																<a class="red" href="<?php echo base_url('employees/delete/'.$enc_id);?>" onclick="return confirm('Are you sure to delete this data?')">
 																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
 																</a>
 															</div>

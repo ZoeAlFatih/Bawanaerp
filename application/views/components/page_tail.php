@@ -33,7 +33,7 @@
 		  <script src="<?php echo base_url('assets/js/excanvas.min.js');?>"></script>
 		<![endif]-->
 		
-<?php $url = $this->uri->segment(2); if ($url=='edit'||$url=='view'){ ?>
+<?php $url = $this->uri->segment(2); if ($url=='edit'||$url=='view'||$url=='profile'||$url=='editprofile'||$url=='changepassword'){ ?>
 		<script src="<?php echo base_url('assets/js/jquery-ui.custom.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/jquery.ui.touch-punch.min.js');?>"></script>		
 		<script src="<?php echo base_url('assets/js/jquery.gritter.min.js');?>"></script>

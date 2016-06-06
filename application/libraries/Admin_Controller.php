@@ -7,12 +7,14 @@ class Admin_Controller extends MY_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('breadcrumb');
+		$this->load->library('encrypt');
 		$this->load->model('employees_m');
 		
-		//load employees data page_nav
-		$id=$this->session->userdata['id'];
-		$this->data['employee'] = $this->employees_m->get($id);
-		
+		if($this->uri->segment(2)!=='login'){
+			//load employees data page_nav
+			$id=$this->session->userdata['id'];
+			$this->data['employee'] = $this->employees_m->get($id);
+		}
 	    //Login Check
 		$exception_uris = array(
 			'employees/login',

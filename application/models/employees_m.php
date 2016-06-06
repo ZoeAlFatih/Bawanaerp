@@ -105,7 +105,7 @@ class Employees_M extends MY_Model {
 			'access_right' => array(
 					'field' => 'access_right',
 					'label' => 'Access Right',
-					'rules' => 'trim|required'
+					'rules' => 'trim'
 			)
 	);
 	
@@ -116,6 +116,20 @@ class Employees_M extends MY_Model {
 					'rules' => 'trim'
 			)
 				
+	);
+	
+	public  $rules_password= array(
+			'password' => array(
+					'field' => 'password',
+					'label' => 'Password',
+					'rules' => 'trim|matches[cpassword]'
+			),
+			'cpassword' => array(
+					'field' => 'cpassword',
+					'label' => 'Confirm password',
+					'rules' => 'trim|matches[password]'
+			)
+	
 	);
 
 	function __construct() {
