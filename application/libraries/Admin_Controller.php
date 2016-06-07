@@ -7,6 +7,7 @@ class Admin_Controller extends MY_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->library('breadcrumb');
+		$this->load->library('Imap');
 		$this->load->library('encrypt');
 		$this->load->model('employees_m');
 		

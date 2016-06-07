@@ -113,7 +113,7 @@
 											</div>
 
 											<div class="infobox-data">
-												<span class="infobox-data-number">32</span>
+												<span class="infobox-data-number"><?php echo $countMassages;?></span>
 												<div class="infobox-content">comments + 2 reviews</div>
 											</div>
 
