@@ -125,7 +125,7 @@
 																<div class="col-sm-9">
 																	<div class="input-large">
 																		<div class="input-group">
-																			<input type="text" name="username" class="input-large" value="<?php echo $employees->username;?>" id="form-field-username" />
+																			<input type="text" name="username" class="input-large" value="<?php echo $employees->username;?>" id="form-field-username" disabled="disabled"/>
 																			<span class="input-group-addon">
 																			<i class="ace-icon fa fa-user-secret"></i>
 																			</span>
@@ -303,7 +303,7 @@
 																<div class="col-sm-9">
 																	<div class="input-large">
 																		<div class="input-group">
-																			<input class="input-large date-picker" id="form-field-date" type="text" name="start_work" data-date-format="yyyy-mm-dd" value="<?php echo $employees->start_work;?>" />
+																			<input class="input-large date-picker" id="form-field-date" type="text" name="start_work" data-date-format="yyyy-mm-dd" value="<?php echo $employees->start_work;?>" disabled="disabled"/>
 																			<span class="input-group-addon">
 																				<i class="ace-icon fa fa-calendar-check-o"></i>
 																			</span>
@@ -320,7 +320,7 @@
 																<div class="col-sm-9">
 																	<div class="input-large">
 																		<div class="input-group">
-																			<input type="text" class="input-large" name="job" id="form-field" value="<?php echo $employees->job;?>"/>
+																			<input type="text" class="input-large" name="job" id="form-field" value="<?php echo $employees->job;?>" disabled="disabled"/>
 																			<span class="input-group-addon">
 																			<i class="ace-icon fa fa-building"></i>
 																			</span>
@@ -337,7 +337,7 @@
 																<div class="col-sm-9">
 																	<div class="input-large">
 																		<div class="input-group">
-																			<input type="text" class="input-large" name="salary" id="form-field" value="<?php echo $employees->salary;?>"/>
+																			<input type="text" class="input-large" name="salary" id="form-field" value="<?php echo $employees->salary;?>" disabled="disabled"/>
 																			<span class="input-group-addon">
 																			<i class="ace-icon fa fa-money"></i>
 																			</span>

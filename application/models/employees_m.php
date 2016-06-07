@@ -105,7 +105,7 @@ class Employees_M extends MY_Model {
 			'access_right' => array(
 					'field' => 'access_right',
 					'label' => 'Access Right',
-					'rules' => 'trim'
+					'rules' => 'trim|required'
 			)
 	);
 	
@@ -130,6 +130,65 @@ class Employees_M extends MY_Model {
 					'rules' => 'trim|matches[password]'
 			)
 	
+	);
+	
+	public  $rules_editprofile= array(
+			'name' => array(
+					'field' => 'name',
+					'label' => 'Name',
+					'rules' => 'trim|required'
+			),
+			'email' => array(
+					'field' => 'email',
+					'label' => 'Email',
+					'rules' => 'trim|required|valid_email|callback__unique_email'
+			),
+			'place_of_birth' => array(
+					'field' => 'place_of_birth',
+					'label' => 'Place Of Birth',
+					'rules' => 'trim|required'
+			),
+			'date_of_birth' => array(
+					'field' => 'date_of_birth',
+					'label' => 'Date Of Birth',
+					'rules' => 'trim|required'
+			),
+			'gender' => array(
+					'field' => 'gender',
+					'label' => 'Gender',
+					'rules' => 'trim|required'
+			),
+			'address' => array(
+					'field' => 'address',
+					'label' => 'Address',
+					'rules' => 'trim|required'
+			),
+			'phone_number' => array(
+					'field' => 'phone_number',
+					'label' => 'Phone Number',
+					'rules' => 'trim|required'
+			),
+			'id_number' => array(
+					'field' => 'id_number',
+					'label' => 'Id Number',
+					'rules' => 'trim'
+			),
+			'npwp' => array(
+					'field' => 'npwp',
+					'label' => 'Npwp',
+					'rules' => 'trim'
+			),
+			'marital_status' => array(
+					'field' => 'marital_status',
+					'label' => 'Marital Status',
+					'rules' => 'trim'
+			),
+			'number_of_children' => array(
+					'field' => 'number_of_children',
+					'label' => 'Number Of Children',
+					'rules' => 'trim|intval'
+			)
+
 	);
 
 	function __construct() {

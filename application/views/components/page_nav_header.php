@@ -302,6 +302,15 @@
 										Profile
 									</a>
 								</li>
+								
+								<li class="divider"></li>
+								
+								<li>
+									<a href="<?php echo base_url('employees/profile/'.$enc_id);?>">
+										<i class="ace-icon fa fa-envelope-o"></i>
+										Mail
+									</a>
+								</li>
 
 								<li class="divider"></li>
 

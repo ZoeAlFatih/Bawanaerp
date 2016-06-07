@@ -149,15 +149,15 @@
 														<td><?php echo rupiah($employee->salary);?></td>
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="<?php echo base_url('employees/view/'.$enc_id);?>">
+																<a class="blue" href="<?php echo base_url('employees/view/'.$enc_id);?>" data-rel="tooltip" data-placement="top" title="View">
 																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
 																</a>
 																
-																<a class="green" href="<?php echo base_url('employees/edit/'.$enc_id);?>">
+																<a class="green" href="<?php echo base_url('employees/edit/'.$enc_id);?>" data-rel="tooltip" data-placement="top" title="Edit">
 																	<i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>
 																
-																<a class="red" href="<?php echo base_url('employees/delete/'.$enc_id);?>" onclick="return confirm('Are you sure to delete this data?')">
+																<a class="red" href="<?php echo base_url('employees/delete/'.$enc_id);?>" onclick="return confirm('Are you sure to delete this data?')" data-rel="tooltip" data-placement="top" title="Delete">
 																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
 																</a>
 															</div>

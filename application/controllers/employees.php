@@ -205,7 +205,7 @@ class Employees extends Admin_Controller {
 		
 	
 		//Set up the form
-		$rules = $this->employees_m->rules_admin;
+		$rules = $this->employees_m->rules_editprofile;
 		$id || $rules['password']['rules'] .= '|required';
 		$this->form_validation->set_rules($rules);
 	
@@ -225,11 +225,11 @@ class Employees extends Admin_Controller {
 			$image = $temp['file_name']; // to get image file name rom upload script , as it could be stored in the databae
 			$this->resize($temp['full_path'],$temp['file_name']);
 			
-			if ($this->input->post('password')== FALSE):
-			$data = $this->employees_m->array_form_post(array('name','username','email','place_of_birth','date_of_birth','gender','address','phone_number','start_work','job','salary','id_number','npwp','marital_status','number_of_children'));
+			if (empty($_FILES['userfile']['name'])):
+			$data = $this->employees_m->array_form_post(array('name','email','place_of_birth','date_of_birth','gender','address','phone_number','id_number','npwp','marital_status','number_of_children'));
 			
 			else :
-			$data = $this->employees_m->array_form_post(array('name','username','email','place_of_birth','date_of_birth','gender','address','phone_number','start_work','job','salary','id_number','npwp','marital_status','number_of_children','foto'));
+			$data = $this->employees_m->array_form_post(array('name','email','place_of_birth','date_of_birth','gender','address','phone_number','id_number','npwp','marital_status','number_of_children','foto'));
 			$data['foto']= $image;
 			endif;
 				
