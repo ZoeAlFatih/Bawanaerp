@@ -6,8 +6,8 @@
 		<!-- <![endif]-->
 
 		<!--[if IE]>
-<script src="<?php echo base_url('assets/js/jquery.1.11.1.min.js');?>"></script>
-<![endif]-->
+		<script src="<?php echo base_url('assets/js/jquery.1.11.1.min.js');?>"></script>
+		<![endif]-->
 
 		<!--[if !IE]> -->
 		<script type="text/javascript">
@@ -50,6 +50,11 @@
 		<script src="<?php echo base_url('assets/js/ace-editable.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/jquery.maskedinput.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/editpage.js');?>"></script>
+<?php } else if ($url=='mail'){ ?>
+		<script src="<?php echo base_url('assets/js/bootstrap-tag.min.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/jquery.hotkeys.min.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/bootstrap-wysiwyg.min.js');?>"></script>
+		<script src="<?php echo base_url('assets/js/mail.js');?>"></script>
 <?php }else{ ?>
 		<script src="<?php echo base_url('assets/js/jquery.dataTables.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/jquery.dataTables.bootstrap.min.js');?>"></script>

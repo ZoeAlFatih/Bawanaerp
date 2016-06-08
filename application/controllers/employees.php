@@ -70,7 +70,7 @@ class Employees extends Admin_Controller {
 			$this->breadcrumb->add_crumb('Employees List',base_url('employees')); // this will be a link
 			$this->breadcrumb->add_crumb($this->data['employees']->name); // this will be a link
 			// change link
-			$this->breadcrumb->change_link('/'); // you can change what joins the crumbs
+			$this->breadcrumb->change_link(' &rsaquo; '); // you can change what joins the crumbs
 			// output
 			$this->data['breadcrumb']=$this->breadcrumb->output();
 		}
@@ -84,7 +84,7 @@ class Employees extends Admin_Controller {
 			$this->breadcrumb->add_crumb('Employees List',base_url('employees')); // this will be a link
 			$this->breadcrumb->add_crumb('New Employee'); // this will be a link
 			// change link
-			$this->breadcrumb->change_link('/'); // you can change what joins the crumbs
+			$this->breadcrumb->change_link(' &rsaquo; '); // you can change what joins the crumbs
 			// output
 			$this->data['breadcrumb']=$this->breadcrumb->output();
 		}
@@ -148,7 +148,7 @@ class Employees extends Admin_Controller {
 		$this->breadcrumb->add_crumb('Employees List',base_url('employees')); // this will be a link
 		$this->breadcrumb->add_crumb('View <i class="ace-icon fa fa-angle-double-right"></i> '.$this->data['employees']->name); // this will be a link
 		// change link
-		$this->breadcrumb->change_link('/'); // you can change what joins the crumbs
+		$this->breadcrumb->change_link(' &rsaquo; '); // you can change what joins the crumbs
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 		//Load View
@@ -171,7 +171,7 @@ class Employees extends Admin_Controller {
 		$this->breadcrumb->add_crumb('Profile'); // this will be a link
 		$this->breadcrumb->add_crumb($this->data['employees']->name); // this will be a link
 		// change link
-		$this->breadcrumb->change_link('/'); // you can change what joins the crumbs
+		$this->breadcrumb->change_link(' &rsaquo; '); // you can change what joins the crumbs
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 		//Load View
@@ -199,7 +199,7 @@ class Employees extends Admin_Controller {
 		$this->breadcrumb->add_crumb('Your Profile',base_url('employees/profile/'.$enc_id)); // this will be a link
 		$this->breadcrumb->add_crumb('Edit Profile <i class="ace-icon fa fa-angle-double-right"></i> '.$this->data['employees']->name); // this will be a link
 		// change link
-		$this->breadcrumb->change_link('/'); // you can change what joins the crumbs
+		$this->breadcrumb->change_link(' &rsaquo; '); // you can change what joins the crumbs
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 		
@@ -267,7 +267,7 @@ class Employees extends Admin_Controller {
 		$this->breadcrumb->add_crumb('Your Profile',base_url('employees/profile/'.$enc_id)); // this will be a link
 		$this->breadcrumb->add_crumb('Change Password <i class="ace-icon fa fa-angle-double-right"></i> '.$this->data['employees']->name); // this will be a link
 		// change link
-		$this->breadcrumb->change_link('/'); // you can change what joins the crumbs
+		$this->breadcrumb->change_link(' &rsaquo; '); // you can change what joins the crumbs
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 		
@@ -295,6 +295,8 @@ class Employees extends Admin_Controller {
 		$this->data['subview'] = 'employees/changepassword';
 		$this->load->view('_layout_main', $this->data);
 	}
+	
+	
 	
 	public function delete($id){
 		//decode $id

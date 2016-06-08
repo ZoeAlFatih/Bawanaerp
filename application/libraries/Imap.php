@@ -204,7 +204,7 @@ class Imap {
         $email = array(
             'to'       => isset($header->to) ? $this->arrayToAddress($header->to) : '',
             'from'     => $this->toAddress($header->from[0]),
-            'date'     => $header->date,
+            'date'     => $header->MailDate,
             'subject'  => $subject,
             'uid'       => $uid,
             'unread'   => strlen(trim($header->Unseen))>0,
