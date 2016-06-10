@@ -73,6 +73,8 @@ class Employees extends Admin_Controller {
 			$this->breadcrumb->change_link(' &rsaquo; '); // you can change what joins the crumbs
 			// output
 			$this->data['breadcrumb']=$this->breadcrumb->output();
+
+			add_metatitle('Employees Edit');
 		}
 		else {
 			$this->data['employees']=$this->employees_m->get_new();
@@ -87,6 +89,8 @@ class Employees extends Admin_Controller {
 			$this->breadcrumb->change_link(' &rsaquo; '); // you can change what joins the crumbs
 			// output
 			$this->data['breadcrumb']=$this->breadcrumb->output();
+
+			add_metatitle('Add New Employees');
 		}
 	
 		//Set up the form
@@ -128,7 +132,6 @@ class Employees extends Admin_Controller {
 			redirect('employees');
 			endif;
 		}
-	
 		//Load the view
 		$this->data['subview']='employees/edit';
 		$this->load->view('_layout_main', $this->data);
@@ -152,6 +155,7 @@ class Employees extends Admin_Controller {
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 		//Load View
+		add_metatitle('View Profile');
 		$this->data['subview'] = 'employees/view';
 		$this->load->view('_layout_main', $this->data);
 	}
@@ -175,6 +179,7 @@ class Employees extends Admin_Controller {
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 		//Load View
+		add_metatitle('Profile');
 		$this->data['subview'] = 'employees/profile';
 		$this->load->view('_layout_main', $this->data);
 	}
@@ -241,7 +246,7 @@ class Employees extends Admin_Controller {
 			redirect('employees/profile/'.$enc_id);
 			endif;
 		}
-	
+		add_metatitle('Edit Profile');
 		//Load the view
 		$this->data['subview']='employees/editprofile';
 		$this->load->view('_layout_main', $this->data);
@@ -290,7 +295,7 @@ class Employees extends Admin_Controller {
 			redirect('employees/profile/'.$enc_id);
 			endif;
 		}
-		
+		add_metatitle('Change Password');
 		//Load View
 		$this->data['subview'] = 'employees/changepassword';
 		$this->load->view('_layout_main', $this->data);

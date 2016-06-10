@@ -306,9 +306,9 @@
 								<li class="divider"></li>
 								
 								<li>
-									<a href="<?php echo base_url('employees/mail/'.$enc_id);?>">
+									<a href="<?php echo base_url('email/inbox/'.$enc_id);?>">
 										<i class="ace-icon fa fa-envelope-o"></i>
-										Mail
+										Email
 									</a>
 								</li>
 

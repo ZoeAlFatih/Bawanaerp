@@ -50,7 +50,7 @@
 		<script src="<?php echo base_url('assets/js/ace-editable.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/jquery.maskedinput.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/editpage.js');?>"></script>
-<?php } else if ($url=='mail'){ ?>
+<?php }elseif($this->uri->segment(1)=='email'){?>
 		<script src="<?php echo base_url('assets/js/bootstrap-tag.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/jquery.hotkeys.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/js/bootstrap-wysiwyg.min.js');?>"></script>
@@ -74,7 +74,9 @@
 		
 <?php $url = $this->uri->segment(1); $urll = $this->uri->segment(2); if ($url==null||$url=='dashboard'||$urll=='login'){ ?>
 		<script src="<?php echo base_url('assets/js/dashboard.js');?>"></script>
-<?php }elseif ($url=='employees'&& $urll==null){ ?>
+<?php }elseif ($url=='employees' && $urll==null){ ?>
+		<script src="<?php echo base_url('assets/js/datatables.js');?>"></script>
+<?php }elseif($url=='email' && $urll=='inbox'){?>
 		<script src="<?php echo base_url('assets/js/datatables.js');?>"></script>
 <?php }?>
 	</body>

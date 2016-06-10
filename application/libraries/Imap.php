@@ -156,17 +156,17 @@ class Imap {
         }
 
         // sort emails descending by date
-        // usort($emails, function($a, $b) {
-        // try {
-        // $datea = new \DateTime($a['date']);
-        // $dateb = new \DateTime($b['date']);
-        // } catch(\Exception $e) {
-        // return 0;
-        // }
-        // if ($datea == $dateb)
-        // return 0;
-        // return $datea < $dateb ? 1 : -1;
-        // });
+        usort($emails, function($a, $b) {
+        try {
+        $datea = new \DateTime($a['date']);
+        $dateb = new \DateTime($b['date']);
+        } catch(\Exception $e) {
+        return 0;
+        }
+        if ($datea == $dateb)
+        return 0;
+        return $datea < $dateb ? 1 : -1;
+        });
 
         return $emails;
     }

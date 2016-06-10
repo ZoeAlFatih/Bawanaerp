@@ -32,7 +32,10 @@
 						<span class="btn btn-danger"></span>
 					</div>
 				</div><!-- /.sidebar-shortcuts -->
-
+				<?php 
+					$enc_id=$this->encrypt->encode($this->session->userdata['id']);
+					$enc_id=str_replace(array('+', '/', '='), array('-', '_', '~'), $enc_id);
+				?>
 				<ul class="nav nav-list">
 					<li <?php echo $active=$this->uri->segment(1)=='dashboard' ? 'class="active"' : 'class=""';?> >
 						<a href="<?php echo base_url('dashboard');?>">
@@ -41,6 +44,54 @@
 						</a>
 
 						<b class="arrow"></b>
+					</li>
+					
+					<li <?php echo $active=$this->uri->segment(1)=='email' ? 'class="active open"' : 'class=""';?> >
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-envelope"></i>
+							<span class="menu-text"> Email </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li <?php echo $active=$this->uri->segment(2)=='inbox' ? 'class="active"' : 'class=""';?>>
+								<a href="<?php echo base_url('email/inbox/'.$enc_id);?>">
+									<i class="menu-icon fa fa-inbox"></i>
+									Inbox
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li <?php echo $active=$this->uri->segment(2)=='sent' ? 'class="active"' : 'class=""';?>>
+								<a href="<?php echo base_url('email/sent/'.$enc_id);?>">
+									<i class="menu-icon fa fa-paper-plane-o"></i>
+									Sent Mail
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							
+							<li <?php echo $active=$this->uri->segment(2)=='draft' ? 'class="active"' : 'class=""';?>>
+								<a href="<?php echo base_url('email/draft/'.$enc_id);?>">
+									<i class="menu-icon fa fa-pencil-square-o"></i>
+									Draft
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							
+							<li <?php echo $active=$this->uri->segment(2)=='junk' ? 'class="active"' : 'class=""';?>>
+								<a href="<?php echo base_url('email/junk/'.$enc_id);?>">
+									<i class="menu-icon fa fa-trash-o"></i>
+									Junk
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
 					</li>
 					
 					<li <?php echo $active=$this->uri->segment(1)=='employees' ? 'class="active"' : 'class=""';?> >
