@@ -1,4 +1,4 @@
-					<div class="breadcrumbs" id="breadcrumbs">
+				<div class="breadcrumbs" id="breadcrumbs">
 						<script type="text/javascript">
 							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
 						</script>
@@ -78,13 +78,10 @@
 						</div><!-- /.ace-settings-container -->
 
 						<div class="page-header">
-							<h1>
-								Inbox
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									Mailbox with some customizations as described in docs
-								</small>
-							</h1>
+							<?php echo anchor('email/composemessage', '<button class="btn btn-info">
+												<i class="ace-icon fa fa-paper-plane bigger-120 white"></i>
+												Compose
+											</button>');?>
 						</div><!-- /.page-header -->
 
 						<div class="row">
@@ -284,5 +281,3 @@
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
-
-						

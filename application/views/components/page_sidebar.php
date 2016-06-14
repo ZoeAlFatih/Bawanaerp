@@ -49,7 +49,12 @@
 					<li <?php echo $active=$this->uri->segment(1)=='email' ? 'class="active open"' : 'class=""';?> >
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-envelope"></i>
-							<span class="menu-text"> Email </span>
+							<span class="menu-text"> 
+							Email 
+							<?php if ($UnreadMassages!==0){?>
+							<span class="badge badge-primary"><?php echo $UnreadMassages;?></span>
+							</span>
+							<?php } ?>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
@@ -68,7 +73,7 @@
 							<li <?php echo $active=$this->uri->segment(2)=='sent' ? 'class="active"' : 'class=""';?>>
 								<a href="<?php echo base_url('email/sent/'.$enc_id);?>">
 									<i class="menu-icon fa fa-paper-plane-o"></i>
-									Sent Mail
+									Sent 
 								</a>
 
 								<b class="arrow"></b>

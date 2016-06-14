@@ -78,13 +78,10 @@
 						</div><!-- /.ace-settings-container -->
 
 						<div class="page-header">
-							<h1>
-								Sent Mail
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									Mailbox with some customizations as described in docs
-								</small>
-							</h1>
+							<?php echo anchor('email/composemessage', '<button class="btn btn-info">
+												<i class="ace-icon fa fa-paper-plane bigger-120 white"></i>
+												Compose
+											</button>');?>
 						</div><!-- /.page-header -->
 
 						<div class="row">
@@ -99,6 +96,7 @@
 														<div id="id-message-list-navbar" class="message-navbar clearfix">
 															<div class="message-bar">
 																<div class="message-infobar" id="id-message-infobar">
+																	<span class="blue bigger-150">Sent Message</span>
 																</div>
 
 																<div class="message-toolbar hide">

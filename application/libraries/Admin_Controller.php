@@ -11,6 +11,17 @@ class Admin_Controller extends MY_Controller {
 		$this->load->library('encrypt');
 		$this->load->model('employees_m');
 		
+		$mailbox = 'strawberry.extremhost.net';
+		$username = $this->session->userdata['email'];
+		$password = 'kencana88';
+		$encryption = 'ssl'; // or ssl or ''
+		// open connection
+		$this->imap->connection($mailbox, $username, $password, $encryption);
+		// stop on error
+		if($this->imap->isConnected()===false)
+			die($this->imap->getError());
+			$this->data['UnreadMassages']=$this->imap->countUnreadMessages();
+			
 		if($this->uri->segment(2)!=='login'){
 			//load employees data page_nav
 			$id=$this->session->userdata['id'];

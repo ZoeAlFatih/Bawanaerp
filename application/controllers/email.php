@@ -24,21 +24,10 @@ class Email extends Admin_Controller {
 		$this->breadcrumb->change_link(' &rsaquo; '); // you can change what joins the crumbs
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
-			
-		$mailbox = 'strawberry.extremhost.net';
-		$username = $this->data['employees']->email;
-		$password = 'kencana88';
-		$encryption = 'ssl'; // or ssl or ''
-			
-		// open connection
-		$this->imap->connection($mailbox, $username, $password, $encryption);
 		
-		// stop on error
-		if($this->imap->isConnected()===false)
-			die($this->imap->getError());
+		//Imap Begin
 			$this->imap->selectFolder('INBOX');
 			$this->data['countMessages']=$this->imap->countMessages();
-			$this->data['UnreadMassages']=$this->imap->countUnreadMessages();
 			$this->data['emails']=$this->imap->getMessages();
 		
 			//Load view
@@ -64,17 +53,7 @@ class Email extends Admin_Controller {
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 			
-		$mailbox = 'strawberry.extremhost.net';
-		$username = $this->data['employees']->email;
-		$password = 'kencana88';
-		$encryption = 'ssl'; // or ssl or ''
-			
-		// open connection
-		$this->imap->connection($mailbox, $username, $password, $encryption);
-	
-		// stop on error
-		if($this->imap->isConnected()===false)
-			die($this->imap->getError());
+			//Imap
 			$this->imap->selectFolder('INBOX.Sent');
 			$this->data['countSentMessages']=$this->imap->countMessages();
 			$this->data['sents']=$this->imap->getMessages();
@@ -102,17 +81,7 @@ class Email extends Admin_Controller {
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 			
-		$mailbox = 'strawberry.extremhost.net';
-		$username = $this->data['employees']->email;
-		$password = 'kencana88';
-		$encryption = 'ssl'; // or ssl or ''
-			
-		// open connection
-		$this->imap->connection($mailbox, $username, $password, $encryption);
-	
-		// stop on error
-		if($this->imap->isConnected()===false)
-			die($this->imap->getError());
+			//imap
 			$this->imap->selectFolder('INBOX.Drafts');
 			$this->data['countDraftMessages']=$this->imap->countMessages();
 			$this->data['drafts']=$this->imap->getMessages();
@@ -140,24 +109,15 @@ class Email extends Admin_Controller {
 		// output
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 			
-		$mailbox = 'strawberry.extremhost.net';
-		$username = $this->data['employees']->email;
-		$password = 'kencana88';
-		$encryption = 'ssl'; // or ssl or ''
-			
-		// open connection
-		$this->imap->connection($mailbox, $username, $password, $encryption);
-	
-		// stop on error
-		if($this->imap->isConnected()===false)
-			die($this->imap->getError());
+		//Imap
 			$this->imap->selectFolder('INBOX.Junk');
 			$this->data['countJunkMessages']=$this->imap->countMessages();
 			$this->data['junks']=$this->imap->getMessages();
 	
 			//Load view
-			add_metatitle('Spam');
+			add_metatitle('Junk');
 			$this->data['subview'] = 'email/junk';
 			$this->load->view('_layout_main',$this->data);
 	}
+	
 }
