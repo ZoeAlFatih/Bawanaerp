@@ -11,7 +11,7 @@ class Admin_Controller extends MY_Controller {
 		$this->load->library('encrypt');
 		$this->load->model('employees_m');
 		
-		$mailbox = 'strawberry.extremhost.net';
+		$mailbox = 'imap.gmail.com';
 		$username = $this->session->userdata['email'];
 		$password = 'kencana88';
 		$encryption = 'ssl'; // or ssl or ''

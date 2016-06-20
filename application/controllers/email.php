@@ -54,7 +54,7 @@ class Email extends Admin_Controller {
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 			
 			//Imap
-			$this->imap->selectFolder('INBOX.Sent');
+			$this->imap->selectFolder('[Gmail]/Sent Mail');
 			$this->data['countSentMessages']=$this->imap->countMessages();
 			$this->data['sents']=$this->imap->getMessages();
 	
@@ -82,7 +82,7 @@ class Email extends Admin_Controller {
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 			
 			//imap
-			$this->imap->selectFolder('INBOX.Drafts');
+			$this->imap->selectFolder('[Gmail]/Drafts');
 			$this->data['countDraftMessages']=$this->imap->countMessages();
 			$this->data['drafts']=$this->imap->getMessages();
 	
@@ -110,7 +110,7 @@ class Email extends Admin_Controller {
 		$this->data['breadcrumb']=$this->breadcrumb->output();
 			
 		//Imap
-			$this->imap->selectFolder('INBOX.Junk');
+			$this->imap->selectFolder('[Gmail]/Spam');
 			$this->data['countJunkMessages']=$this->imap->countMessages();
 			$this->data['junks']=$this->imap->getMessages();
 	
