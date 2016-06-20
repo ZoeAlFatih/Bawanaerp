@@ -11,7 +11,7 @@ class Admin_Controller extends MY_Controller {
 		$this->load->library('encrypt');
 		$this->load->model('employees_m');
 		
-		$mailbox = 'imap.gmail.com';
+		/* $mailbox = 'imap.gmail.com';
 		$username = $this->session->userdata['email'];
 		$password = 'kencana88';
 		$encryption = 'ssl'; // or ssl or ''
@@ -20,7 +20,7 @@ class Admin_Controller extends MY_Controller {
 		// stop on error
 		if($this->imap->isConnected()===false)
 			die($this->imap->getError());
-			$this->data['UnreadMassages']=$this->imap->countUnreadMessages();
+			$this->data['UnreadMassages']=$this->imap->countUnreadMessages(); */
 			
 		if($this->uri->segment(2)!=='login'){
 			//load employees data page_nav
